@@ -21,33 +21,26 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (
-      formData.image.trim() &&
-      formData.title.trim() &&
-      formData.description.trim() &&
-      formData.category.trim()
+      formData.image &&
+      formData.title &&
+      formData.description &&
+      formData.category
     ) {
+
       setList([
         {
-          image: formData.image,
-          title: formData.title,
-          description: formData.description,
-          category: formData.category,
-          tags: formData.tags.split(',').map(tag => tag.trim()),
+          ...formData,
+          tags: formData.tags.split(',')
         },
         ...list,
       ]);
-      setFormData({
-        image: "",
-        title: "",
-        description: "",
-        category: "",
-        tags: "",
-      });
+    } else {
+      alert('Compila tutti i campi per aggiungere un oggetto')
     }
   };
 
   const handleDelete = (indexToDelete) => {
-    setList(list.filter((_, index) => index !== indexToDelete));
+    setList(list.filter((i, index) => index !== indexToDelete));
   };
 
   return (
@@ -59,7 +52,6 @@ function App() {
             <input
               type="text"
               className="form-control"
-              name="image"
               placeholder="URL Immagine"
               value={formData.image}
               onChange={handleChange}
@@ -69,7 +61,6 @@ function App() {
             <input
               type="text"
               className="form-control"
-              name="title"
               placeholder="Titolo"
               value={formData.title}
               onChange={handleChange}
@@ -78,7 +69,6 @@ function App() {
           <div className="mb-2">
             <textarea
               className="form-control"
-              name="description"
               placeholder="Descrizione"
               value={formData.description}
               onChange={handleChange}
@@ -88,7 +78,6 @@ function App() {
             <input
               type="text"
               className="form-control"
-              name="category"
               placeholder="Categoria"
               value={formData.category}
               onChange={handleChange}
@@ -98,7 +87,6 @@ function App() {
             <input
               type="text"
               className="form-control"
-              name="tags"
               placeholder="Tag (separati da virgola)"
               value={formData.tags}
               onChange={handleChange}
