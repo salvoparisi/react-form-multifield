@@ -37,6 +37,13 @@ function App() {
     } else {
       alert('Compila tutti i campi per aggiungere un oggetto')
     }
+    setFormData({
+      image: "",
+      title: "",
+      description: "",
+      category: "",
+      tags: "",
+    });
   };
 
   const handleDelete = (indexToDelete) => {
@@ -52,6 +59,7 @@ function App() {
             <input
               type="text"
               className="form-control"
+              name="image"
               placeholder="URL Immagine"
               value={formData.image}
               onChange={handleChange}
@@ -61,6 +69,7 @@ function App() {
             <input
               type="text"
               className="form-control"
+              name="title"
               placeholder="Titolo"
               value={formData.title}
               onChange={handleChange}
@@ -69,6 +78,7 @@ function App() {
           <div className="mb-2">
             <textarea
               className="form-control"
+              name="description"
               placeholder="Descrizione"
               value={formData.description}
               onChange={handleChange}
@@ -78,6 +88,7 @@ function App() {
             <input
               type="text"
               className="form-control"
+              name="category"
               placeholder="Categoria"
               value={formData.category}
               onChange={handleChange}
@@ -87,6 +98,7 @@ function App() {
             <input
               type="text"
               className="form-control"
+              name="tags"
               placeholder="Tag (separati da virgola)"
               value={formData.tags}
               onChange={handleChange}
