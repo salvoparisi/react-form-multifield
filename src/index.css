@@ -1,6 +1,10 @@
 .max-w {
     width: 600px;
     margin-bottom: 20px;
+
+    img {
+        width: 566px;
+    }
 }
 
 .min-h {

@@ -111,7 +111,7 @@ function App() {
           {list.map((obj, index) => (
             <div key={index} className="max-w position-relative border p-3">
               <button
-                className="btn btn-danger position-absolute end-0 m-1"
+                className="btn btn-danger position-absolute end-0 top-0 m-1"
                 onClick={() => handleDelete(index)}
               >
                 Delete
