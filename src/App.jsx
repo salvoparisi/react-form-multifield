@@ -27,7 +27,6 @@ function App() {
       formData.category.trim()
     ) {
       setList([
-        ...list,
         {
           image: formData.image,
           title: formData.title,
@@ -35,6 +34,7 @@ function App() {
           category: formData.category,
           tags: formData.tags.split(',').map(tag => tag.trim()),
         },
+        ...list,
       ]);
       setFormData({
         image: "",
