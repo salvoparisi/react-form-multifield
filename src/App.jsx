@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import list from './list.jsx'
+import initialList from './list.jsx'
 
 function App() {
-  const [list, setList] = useState(["titolo 1", "titolo 2", "titolo 3", "titolo 4"]);
+  console.log(initialList);
+
+  const [list, setList] = useState(initialList);
   const [title, setTitle] = useState("");
 
   const handleSubmit = (e) => {
@@ -31,23 +33,24 @@ function App() {
           />
           <button type="submit" className='mx-3 mb-3 btn btn-primary'>invia</button>
         </form>
-        <div>
-          <ul className="list-group">
-            {list.map((title, index) => (
-              <li
-                key={index}
-                className="list-group-item d-flex justify-content-between align-items-center"
-              >
-                {title}
-                <button
-                  className="btn btn-primary"
-                  onClick={() => handleDelete(index)}
-                >
-                  Delete
-                </button>
-              </li>
-            ))}
-          </ul>
+        <div className='d-flex flex-wrap justify-content-between'>
+
+          {list.map((obj, index) => (
+            <div key={index} className='max-w'>
+              <img src={obj.image} alt="" />
+              <h3>{obj.title}</h3>
+              <p className='min-h'>{obj.description}</p>
+              <div className='d-flex justify-content-between'>
+                <div className="tags">
+                  {obj.tags.map((tag, index) => {
+                    return <span className='me-3 btn btn-primary' key={index}>{tag}</span>
+                  })}
+                </div>
+                <span className='btn btn-warning'>{obj.category}</span>
+              </div>
+            </div>
+          ))}
+
         </div>
       </div>
     </>
